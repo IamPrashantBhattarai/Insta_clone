@@ -56,14 +56,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     backgroundImage: NetworkImage(
                         "https://images.unsplash.com/photo-1675426513908-75bf6aaee78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"),
                   ),
-                  Positioned(
-                    bottom: -10,
-                    left: 80,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.add_a_photo),
-                    ),
-                  ),
+                  // Positioned(
+                  //   bottom: -10,
+                  //   left: 80,
+                  //   child: IconButton(
+                  //     onPressed: () {},
+                  //     icon: const Icon(Icons.add_a_photo),
+                  //   ),
+                  // ),
                 ],
               ),
               const SizedBox(
@@ -120,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     color: Colors.blue,
                   ),
-                  child: const Text('Log in'),
+                  child: const Text('Sign up'),
                 ),
               ),
               const SizedBox(
@@ -131,34 +131,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Container(),
               ),
               //Transition to the signup
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8,
-                    ),
-                    child: const Text("Don't have an account?"),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                      ),
-                      child: const Text(
-                        "Sign up.",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
