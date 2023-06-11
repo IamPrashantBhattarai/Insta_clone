@@ -1,11 +1,13 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthMethods {
   //We have to create the instance of this class(Firebase Auth)
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   //Sign up the user
   Future<String> signUpUser({
@@ -26,6 +28,19 @@ class AuthMethods {
         //register user using firebase
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        print(cred.user!.uid);
+        //add user to our database
+        await _firestore.collection('users').doc(cred.user!.uid).set({
+          'username': username,
+          'uid': cred.user!.uid,
+          'email': email,
+          'bio': bio,
+          //followers and following will be the list of uids for a account
+          'followers': [],
+          'following': [],
+        });
+
+        res = "Success";
       }
     } catch (err) {
       res = err.toString();
