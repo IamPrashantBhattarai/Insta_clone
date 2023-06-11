@@ -99,7 +99,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               TextFieldInput(
                 textEditingController: _bioController,
-                hintText: 'Enter your username',
+                hintText: 'Add bio',
                 textInputType: TextInputType.text,
               ),
 
