@@ -52,7 +52,7 @@ class _SignupScreenState extends State<SignupScreen> {
               // circular widget to accept and show our selected file
               const Stack(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 64,
                     backgroundImage: NetworkImage(
                         "https://images.unsplash.com/photo-1675426513908-75bf6aaee78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"),
@@ -109,14 +109,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               InkWell(
-                onTap: () {
-                  AuthMethods().signUpUser(
-                      username: _usernameController.text,
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                      bio: _bioController.text,
-                      file: file,
-                  ),
+                onTap: () async {
+                  var file;
+                  String res = await AuthMethods().signUpUser(
+                    username: _usernameController.text,
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                    bio: _bioController.text,
+                    file: file,
+                  );
+                  print(res);
                 },
                 child: Container(
                   width: double.infinity,
