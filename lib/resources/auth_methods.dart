@@ -17,7 +17,7 @@ class AuthMethods {
     required String bio,
     required Uint8List file,
   }) async {
-    String res = "Some error has been occured";
+    String res = "Some error has been occured.";
     try {
       //update the value of res
       if (email.isNotEmpty ||
