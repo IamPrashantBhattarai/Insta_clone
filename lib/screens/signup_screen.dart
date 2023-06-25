@@ -20,6 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   Uint8List? _image;
+
   @override
   void dispose() {
     super.dispose();
@@ -31,7 +32,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
   void selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
-    setState(() {});
+    setState(() {
+      _image = im;
+    });
   }
 
   @override
@@ -60,11 +63,14 @@ class _SignupScreenState extends State<SignupScreen> {
               // circular widget to accept and show our selected file
               const Stack(
                 children: [
-                  CircleAvatar(
-                    radius: 64,
-                    backgroundImage: NetworkImage(
-                        "https://images.unsplash.com/photo-1675426513908-75bf6aaee78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"),
-                  ),
+                  _image != null
+                      ? CircleAvatar(
+                          radius: 64, backgroundImage: MemoryImage(_image!),),
+                      : const CircleAvatar(
+                          radius: 64,
+                          backgroundImage: NetworkImage(
+                              "https://www.vectorstock.com/royalty-free-vector/default-avatar-profile-icon-vector-18942381"),
+                        ),
                   Positioned(
                     bottom: -10,
                     left: 80,
