@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instagram_clone/resources/auth_methods.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
+import 'package:instagram_clone/utils/utils.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -16,7 +19,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
-
+  Uint8List? _image;
   @override
   void dispose() {
     super.dispose();
@@ -24,6 +27,11 @@ class _SignupScreenState extends State<SignupScreen> {
     _passwordController.dispose();
     _bioController.dispose();
     _usernameController.dispose();
+  }
+
+  void selectImage() async {
+    Uint8List im = await pickImage(ImageSource.gallery);
+    setState(() {});
   }
 
   @override
@@ -57,14 +65,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     backgroundImage: NetworkImage(
                         "https://images.unsplash.com/photo-1675426513908-75bf6aaee78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"),
                   ),
-                  // Positioned(
-                  //   bottom: -10,
-                  //   left: 80,
-                  //   child: IconButton(
-                  //     onPressed: () {},
-                  //     icon: const Icon(Icons.add_a_photo),
-                  //   ),
-                  // ),
+                  Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                      onPressed: selectImage(),
+                      icon: const Icon(Icons.add_a_photo),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(
