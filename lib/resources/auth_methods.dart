@@ -30,6 +30,7 @@ class AuthMethods {
             email: email, password: password);
         print(cred.user!.uid);
         //add user to our database
+
         await _firestore.collection('users').doc(cred.user!.uid).set({
           'username': username,
           'uid': cred.user!.uid,
