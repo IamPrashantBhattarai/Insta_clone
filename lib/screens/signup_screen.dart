@@ -30,7 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
     _usernameController.dispose();
   }
 
-  void selectImage() async {
+  void onImageSelectPressed() async {
     Uint8List im = await pickImage(ImageSource.gallery);
     setState(() {
       _image = im;
@@ -61,11 +61,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 64,
               ),
               // circular widget to accept and show our selected file
-              const Stack(
+              Stack(
                 children: [
                   _image != null
                       ? CircleAvatar(
-                          radius: 64, backgroundImage: MemoryImage(_image!),),
+                          radius: 64,
+                          backgroundImage: MemoryImage(_image!),
+                          backgroundColor: Colors.red,
+                        )
                       : const CircleAvatar(
                           radius: 64,
                           backgroundImage: NetworkImage(
@@ -75,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     bottom: -10,
                     left: 80,
                     child: IconButton(
-                      onPressed: selectImage(),
+                      onPressed: onImageSelectPressed,
                       icon: const Icon(Icons.add_a_photo),
                     ),
                   ),
