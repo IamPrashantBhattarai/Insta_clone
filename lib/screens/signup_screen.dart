@@ -162,7 +162,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     color: Colors.blue,
                   ),
-                  child: const Text('Sign up'),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        )
+                      : const Text('Sign up'),
                 ),
               ),
               const SizedBox(
