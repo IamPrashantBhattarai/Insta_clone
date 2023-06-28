@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/resources/storage_methods.dart';
 
 class AuthMethods {
   //We have to create the instance of this class(Firebase Auth)
@@ -29,6 +30,9 @@ class AuthMethods {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
         print(cred.user!.uid);
+
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('profilePictures', file, false);
         //add user to our database
 
         await _firestore.collection('users').doc(cred.user!.uid).set({
@@ -39,10 +43,18 @@ class AuthMethods {
           //followers and following will be the list of uids for a account
           'followers': [],
           'following': [],
+          'photoUrl': photoUrl,
         });
 
         res = "Success";
       }
+      //Like wise we can give our custom errormessage using firebase.
+      // } on FirebaseAuthException catch (err) {
+      //   if (err.code == 'invalid-email') {
+      //     res = "The email is badly formatted.";
+      //   } else if (err.code == 'weak-password') {
+      //     res = "Password should be at least 6 characters.";
+      //   }
     } catch (err) {
       res = err.toString();
     }
