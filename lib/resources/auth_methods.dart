@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:instagram_clone/models/user.dart' as model;
 import 'package:instagram_clone/resources/storage_methods.dart';
 
 class AuthMethods {
@@ -35,16 +35,19 @@ class AuthMethods {
             .uploadImageToStorage('profilePictures', file, false);
         //add user to our database
 
-        await _firestore.collection('users').doc(cred.user!.uid).set({
+        model.User user = model.User(
           'username': username,
-          'uid': cred.user!.uid,
+        'uid': cred.user!.uid,
           'email': email,
           'bio': bio,
+          'photoUrl': photoUrl,
           //followers and following will be the list of uids for a account
           'followers': [],
           'following': [],
-          'photoUrl': photoUrl,
-        });
+
+        );
+
+        await _firestore.collection('users').doc(cred.user!.uid).set(user);
 
         res = "Success";
       }
