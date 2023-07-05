@@ -28,13 +28,44 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   // }
 
   int _page = 0;
+  late PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.dispose();
+  }
+
+  void navigationTapped(int page) {
+    pageController.jumpToPage(page);
+  }
+
+  void onPageChanged(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
 
   @override
   // model.User user = Provider.of<UserProvider>(context).getUser;
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-          child: Text("This is mobile screen"),
+        body: PageView(
+          children: [
+            Text("feed"),
+            Text("seacrh"),
+            Text("add_post"),
+            Text("notify"),
+            Text("profile"),
+          ],
+          controller: pageController,
+          onPageChanged: onPageChanged,
         ),
         bottomNavigationBar: CupertinoTabBar(
           backgroundColor: mobileBackgroundColor,
@@ -80,6 +111,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               backgroundColor: primaryColor,
             ),
           ],
+          onTap: navigationTapped,
         ));
   }
 }
