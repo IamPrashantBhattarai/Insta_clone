@@ -35,7 +35,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("Mobile Screen"),
+        child: Text(user.username),
       ),
     );
   }
