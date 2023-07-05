@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/providers/user_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:instagram_clone/models/user.dart' as model;
+import 'package:instagram_clone/utils/colors.dart';
 
 class MobileScreenLayout extends StatefulWidget {
   const MobileScreenLayout({Key? key}) : super(key: key);
@@ -31,12 +28,41 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   // }
 
   @override
-  model.User user = Provider.of<UserProvider>(context).getUser;
+  // model.User user = Provider.of<UserProvider>(context).getUser;
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text(user.username),
-      ),
-    );
+    return Scaffold(
+        body: Center(
+          child: Text("This is mobile screen"),
+        ),
+        bottomNavigationBar: CupertinoTabBar(
+          backgroundColor: mobileBackgroundColor,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '',
+              backgroundColor: primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: '',
+              backgroundColor: primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle),
+              label: '',
+              backgroundColor: primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: '',
+              backgroundColor: primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '',
+              backgroundColor: primaryColor,
+            ),
+          ],
+        ));
   }
 }

@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:instagram_clone/models/user.dart' as model;
@@ -13,10 +12,10 @@ class AuthMethods {
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
 
-    DocumentSnapshot snapshot =
+    DocumentSnapshot documentSnapshot =
         await _firestore.collection("users").doc(currentUser.uid).get();
 
-    return model.User.fromSnap(snap);
+    return model.User.fromSnap(documentSnapshot);
   }
 
   //Sign up the user

@@ -33,9 +33,9 @@ class _ResponsiveLayoutState extends State<ResponsiveLayout> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constrains) {
-        if (constrains.minHeight > webScreenSize) {
-          return widget.webScreenLayout;
-        }
+        // if (constrains.minHeight > webScreenSize) {
+        //   return widget.webScreenLayout;
+        // }
         return widget.mobileScreenLayout;
       },
     );
