@@ -49,7 +49,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     'https://images.unsplash.com/photo-1688506706968-d0780d1eec4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.3,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: TextField(
                   decoration: const InputDecoration(
                     hintText: "Write a caption...",
@@ -58,6 +58,24 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   maxLines: 8,
                 ),
               ),
+              SizedBox(
+                height: 45,
+                width: 45,
+                child: AspectRatio(
+                  aspectRatio: 487 / 451,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            "https://cdn.pixabay.com/photo/2019/02/19/13/40/horse-4006848_1280.jpg"),
+                        fit: BoxFit.fill,
+                        alignment: FractionalOffset.topCenter,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const Divider(),
             ],
           )
         ],
