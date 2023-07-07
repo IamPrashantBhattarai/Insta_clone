@@ -2,7 +2,10 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instagram_clone/providers/user_provider.dart';
 import 'package:instagram_clone/utils/utils.dart';
+import 'package:provider/provider.dart';
+import '../models/user.dart';
 import '../utils/colors.dart';
 
 class AddPostScreen extends StatefulWidget {
@@ -54,6 +57,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserProvider>(context).getUser;
     return _file == null
         ? Center(
             child: IconButton(
@@ -92,7 +96,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   children: [
                     CircleAvatar(
                       backgroundImage: NetworkImage(
-                          'https://images.unsplash.com/photo-1688506706968-d0780d1eec4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'),
+                        user.photoUrl,
+                      ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
