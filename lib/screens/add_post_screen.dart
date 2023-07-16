@@ -56,7 +56,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final User user = Provider.of<UserProvider>(context).getUser;
+    final User user = Provider.of<UserProvider>(context).getUser;
     return _file == null
         ? Center(
             child: IconButton(
@@ -95,8 +95,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   children: [
                     CircleAvatar(
                       backgroundImage: NetworkImage(
-                        // user.photoUrl,
-                        "https://cdn.pixabay.com/photo/2023/07/04/17/14/rocks-8106681_1280.jpg",
+                        user.photoUrl,
                       ),
                     ),
                     SizedBox(
@@ -117,8 +116,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://cdn.pixabay.com/photo/2019/02/19/13/40/horse-4006848_1280.jpg"),
+                              image: MemoryImage(_file!),
                               fit: BoxFit.fill,
                               alignment: FractionalOffset.topCenter,
                             ),
