@@ -16,7 +16,8 @@ class AddPostScreen extends StatefulWidget {
 
 class _AddPostScreenState extends State<AddPostScreen> {
   Uint8List? _file;
-  _selextImage(BuildContext context) async {
+  final TextEditingController _descriptionController = TextEditingController();
+  _selectImage(BuildContext context) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -62,7 +63,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
             child: IconButton(
               icon: Icon(Icons.upload),
               onPressed: () {
-                _selextImage(context);
+                _selectImage(context);
               },
             ),
           )
@@ -101,6 +102,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: TextField(
+                        controller: _descriptionController,
                         decoration: const InputDecoration(
                           hintText: "Write a caption...",
                           border: InputBorder.none,
