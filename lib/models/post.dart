@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class User {
+class Post {
   final String description;
   final String uid;
   final String username;
   final String postId;
-  final String datePublished;
+  final datePublished;
   final String postUrl;
   final String profImage;
   final likes;
 
-  const User({
+  const Post({
     required this.description,
     required this.uid,
     required this.username,
@@ -23,25 +23,27 @@ class User {
 
 //This function toJson will create the object file of class User
   Map<String, dynamic> toJson() => {
+        "description": description,
         "username": username,
         "uid": uid,
-        "email": email,
-        "photoUrl": photoUrl,
-        "bio": bio,
-        "followers": followers,
-        "following": following,
+        "postId": postId,
+        "datePublished": datePublished,
+        "postUrl": postUrl,
+        "profImage": profImage,
+        "likes": likes,
       };
 
-  static User fromSnap(DocumentSnapshot snap) {
+  static Post fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
-    return User(
+    return Post(
       username: snapshot['username'],
       uid: snapshot['uid'],
-      email: snapshot['email'],
-      photoUrl: snapshot['photoUrl'],
-      bio: snapshot['bio'],
-      followers: snapshot['followers'],
-      following: snapshot['following'],
+      description: snapshot['description'],
+      postId: snapshot['postId'],
+      datePublished: snapshot['datePublished'],
+      postUrl: snapshot['postUrl'],
+      profImage: snapshot['profImage'],
+      likes: snapshot['likes'],
     );
   }
 }
