@@ -22,14 +22,22 @@ class FirebstoreMethods {
       String postId = const Uuid().v1();
 
       Post post = Post(
-          description: description,
-          uid: uid,
-          username: username,
-          postId: postId,
-          datePublished: DateTime.now(),
-          postUrl: photoUrl,
-          profImage: profImage,
-          likes: []);
-    } catch (e) {}
+        description: description,
+        uid: uid,
+        username: username,
+        postId: postId,
+        datePublished: DateTime.now(),
+        postUrl: photoUrl,
+        profImage: profImage,
+        likes: [],
+      );
+      _firestore.collection('posts').doc(postId).set(
+            post.toJson(),
+          );
+      res = "success";
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
   }
 }
