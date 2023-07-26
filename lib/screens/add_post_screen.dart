@@ -116,7 +116,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
               actions: [
                 TextButton(
                   onPressed: () {
-                    postImage();
+                    postImage(
+                      user.uid,
+                      user.username,
+                      user.photoUrl,
+                    );
                   },
                   child: const Text(
                     'Post',
