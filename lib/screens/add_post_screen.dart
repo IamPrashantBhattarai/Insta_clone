@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram_clone/providers/user_provider.dart';
+import 'package:instagram_clone/resources/firestore_methods.dart';
 import 'package:instagram_clone/utils/utils.dart';
 import 'package:provider/provider.dart';
 import '../models/user.dart';
@@ -23,7 +24,22 @@ class _AddPostScreenState extends State<AddPostScreen> {
     String username,
     String profImage,
   ) async {
-    try {} catch (e) {}
+    try {
+      String res = await FirebstoreMethods().uploadPost(
+        _descriptionController.text,
+        _file!,
+        uid,
+        username,
+        profImage,
+      );
+      if (res == 'success') {
+        showSnackBar("Posted", context);
+      } else {
+        showSnackBar(res, context);
+      }
+    } catch (e) {
+      showSnackBar(e.toString(), context);
+    }
   }
 
   _selectImage(BuildContext context) async {
@@ -99,7 +115,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
               title: const Text("Post To"),
               actions: [
                 TextButton(
-                  onPressed: postImage,
+                  onPressed: () {
+                    postImage();
+                  },
                   child: const Text(
                     'Post',
                     style: TextStyle(
