@@ -26,24 +26,38 @@ class PostCard extends StatelessWidget {
                     "https://images.unsplash.com/photo-1687360440613-7e002b7261da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=60",
                   ),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
                 Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 0,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "username",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "username",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ],
-                  ),
-                ))
+                ),
+                IconButton(
+                  onPressed: () {
+                    showDialog(context: context, builder: (context) ==>Dialog(
+                      child: ListView(
+
+                    ),
+                    ));
+                  },
+                  icon: Icon(Icons.more_vert),
+                )
               ],
             ),
           )
