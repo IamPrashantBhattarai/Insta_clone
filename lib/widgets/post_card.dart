@@ -127,6 +127,27 @@ class PostCard extends StatelessWidget {
                 ),
               )
             ],
+          ),
+          // Description and Comments
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DefaultTextStyle(
+                  style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        fontWeight: FontWeight.w800,
+                      ),
+                  child: Text(
+                    "2,000 likes",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
