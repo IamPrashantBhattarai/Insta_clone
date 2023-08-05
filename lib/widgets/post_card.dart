@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:instagram_clone/utils/colors.dart';
 
 class PostCard extends StatelessWidget {
@@ -166,6 +167,29 @@ class PostCard extends StatelessWidget {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Text(
+                      "View all 200 comments",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: secondaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 0),
+                  child: Text(
+                    "08/06/2023",
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: secondaryColor,
                     ),
                   ),
                 ),
