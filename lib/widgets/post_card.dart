@@ -13,6 +13,7 @@ class PostCard extends StatelessWidget {
       ),
       child: Column(
         children: [
+          // Header Section
           Container(
             padding: const EdgeInsets.symmetric(
               vertical: 4,
@@ -80,6 +81,18 @@ class PostCard extends StatelessWidget {
                   icon: Icon(Icons.more_vert),
                 )
               ],
+            ),
+          ),
+          // Image Section
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.35,
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.network(
+                "https://images.unsplash.com/photo-1687360440613-7e002b7261da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=60",
+                fit: BoxFit.cover,
+              ),
             ),
           )
         ],
