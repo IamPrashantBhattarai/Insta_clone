@@ -7,7 +7,15 @@ class UserProvider with ChangeNotifier {
   //Make sure to make this user a private field
   User? _user;
   final AuthMethods _authMethods = AuthMethods();
-  User get getUser => _user!;
+  User get getUser => const User(
+        uid: '',
+        followers: '',
+        email: '',
+        bio: '',
+        photoUrl: '',
+        username: '',
+        following: '',
+      );
 
   Future<void> refreshUser() async {
     User user = await _authMethods.getUserDetails();
